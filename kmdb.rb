@@ -291,7 +291,7 @@ for movie in movies
     warner = Studio.find_by({"id" => studio})
 
     # puts movie.inspect
-    puts "- #{title} #{year} #{rating} #{warner["name"]}"
+    puts "#{title} #{year} #{rating} #{warner["name"]}"
 end
 
 # Prints a header for the cast output
@@ -302,3 +302,15 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+roles = Role.all
+
+for role in roles
+    w = role["movie_id"]
+    bat = Movie.find_by({"id" => w})
+    x = role["actor_id"]
+    act = Actor.find_by({"id" => x})
+    character = role["character_name"]
+
+    puts "#{bat["name"]} #{act["name"]} #{character}"
+end
